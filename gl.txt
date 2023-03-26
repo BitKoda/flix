@@ -1,0 +1,13 @@
+  {
+    title: 'Green Lantern',
+    description:
+    %{
+      Reckless test pilot Hal Jordan is granted an alien ring that bestows him with otherworldly powers that inducts him into an intergalactic police force, the Green Lantern Corps.
+    }.squish,
+    released_on: "2011-06-17",
+    rating: 'PG-13',
+    total_gross: 219_851_172,
+    director: 'Martin Campbell',
+    duration: 114,
+    image_file_name: 'green-lantern.png'
+  },

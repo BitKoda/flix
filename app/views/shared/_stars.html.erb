@@ -1,0 +1,39 @@
+<% if local_assigns.has_key? :object %>
+  <div class="star-rating">
+  <div class="back-stars">
+    <span>*</span>
+    <span>*</span>
+    <span>*</span>
+    <span>*</span>
+    <span>*</span>
+      <div class="front-stars" style="width: <%= object.average_stars_as_percent %>%">
+        <span>*</span>
+        <span>*</span>
+        <span>*</span>
+        <span>*</span>
+        <span>*</span>
+      </div>
+  </div>
+  <div class="review-data">
+    <span class="average-star-data"><%= object.average_stars %> out of 5 stars</span> 
+    <span class="number-reviews">(<%= link_to object.reviews.count, movie_reviews_path(object) %>)</span> 
+  </div>
+  </div>
+<% else %>
+  <div class="star-rating">
+    <div class="back-stars">
+      <span>*</span>
+      <span>*</span>
+      <span>*</span>
+      <span>*</span>
+      <span>*</span>
+        <div class="front-stars" style="width: <%= percent %>%">
+          <span>*</span>
+          <span>*</span>
+          <span>*</span>
+          <span>*</span>
+          <span>*</span>
+        </div>
+    </div>
+  </div>
+<% end %>

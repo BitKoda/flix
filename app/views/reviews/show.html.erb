@@ -1,0 +1,12 @@
+<p>asdlfkjnsdkljfnvklsdjnfv</p>
+<h1><%= @review.user.name %> on <%= link_to @movie.title, @movie %></h1>
+<p>
+  <%= render "shared/stars", percent: @review.stars_as_percent %>
+</p>
+<p>
+  <%= @review.comment %>
+</p>
+<section class="admin">
+  <%= link_to "Edit review", edit_movie_review_path(@movie, @review), class: "button" %>
+  <%= link_to "Delete review", movie_review_path(@movie, @review), class: "button", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+</section>

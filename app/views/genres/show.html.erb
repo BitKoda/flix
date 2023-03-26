@@ -1,0 +1,11 @@
+<h1><%= @genre.name.capitalize %> Movies</h1>
+<% if @movies.present? %>
+  <div class="">
+    <% @movies.each do |movie| %>
+      <%= link_to image_tag(movie.image_file_name, class: "movie-image"), movie %>
+    <% end %>
+  </div>
+<% else %>
+  <p>No movies for this genre yet. <%= link_to "Add some.", signin_path %></p>
+
+<% end %>
