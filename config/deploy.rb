@@ -2,7 +2,7 @@
 lock "~> 3.17.2"
 
 set :application, "flix"
-set :repo_url, "git@example.com:me/my_repo.git"
+set :repo_url, "git@github.com:bitkoda/flix.git"
 
 # Deploy to the user's home directory
 set :deploy_to, "/home/deploy/#{fetch :application}"
