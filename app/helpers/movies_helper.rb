@@ -1,4 +1,8 @@
 module MoviesHelper
+  def main_image(movie)
+    movie.main_image.attached? ? image_tag(movie.main_image, class: "movie-image") : image_tag("placeholder.png", class: "movie-image")
+  end
+
   def total_gross(movie)
     if movie.flop?
       "Flop!"

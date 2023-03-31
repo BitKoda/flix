@@ -1,14 +1,14 @@
 <% @movies.each do |movie| %>
   <section class="movie">
     <div class="image">
-      <%= image_tag movie.image_file_name %>
+      <%= main_image(movie) %>
     </div>
 
     <div class="summary">
-      <h2>
-        <%= link_to movie.title, movie %>
-      </h2>
       <% if movie.released_on < Time.now %>
+        <h2>
+          <%= link_to movie.title, movie %>
+        </h2>
         <h3><%= total_gross(movie) %></h3>
         <%= render "shared/stars", object: movie %>
         <% else %>
