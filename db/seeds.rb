@@ -175,4 +175,6 @@ genres = ["sci-fi",
           "romance", 
           "thriller"]
 
-genres.each |genre| { Genre.create!(name: genre) }
+genres.each do |genre| 
+  Genre.create!(name: genre)
+end
