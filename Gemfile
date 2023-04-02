@@ -29,6 +29,7 @@ gem "jbuilder"
 group :production do
   # Use Redis adapter to run Action Cable in production
   gem 'pg'
+  gem 'aws-sdk-s3'
 end
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
