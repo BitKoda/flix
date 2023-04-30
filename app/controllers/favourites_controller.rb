@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# FavouritesController
 class FavouritesController < ApplicationController
   before_action :require_signin
   before_action :set_movie

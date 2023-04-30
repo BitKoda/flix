@@ -1,5 +1,7 @@
-class Genre < ApplicationRecord
+# frozen_string_literal: true
 
+# Genre model logic
+class Genre < ApplicationRecord
   before_save :set_params
 
   validates :name, presence: true, uniqueness: true

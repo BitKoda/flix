@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# User model logic
 class User < ApplicationRecord
   before_save :format_email
   before_save :format_username
@@ -11,16 +14,16 @@ class User < ApplicationRecord
 
   validates :name, presence: true
 
-  validates :email, 
-    format: { with: /\S+@\S+/ },
-    uniqueness: { case_sensitive: false }
+  validates :email,
+            format: { with: /\S+@\S+/ },
+            uniqueness: { case_sensitive: false }
 
   validates :password, length: { minimum: 8, maximum: 16, allow_blank: true }
 
   validates :username,
-    presence: true,
-    format: { with: /[a-z0-9]+/ },
-    uniqueness: { case_sensitive: false }
+            presence: true,
+            format: { with: /[a-z0-9]+/ },
+            uniqueness: { case_sensitive: false }
 
   scope :by_name, -> { order(:name) }
   scope :not_admins, -> { by_name.where(admin: false) }
@@ -36,11 +39,10 @@ class User < ApplicationRecord
   private
 
   def format_email
-    self.email.downcase
+    email.downcase
   end
 
   def format_username
-    self.username.downcase.parameterize 
+    username.downcase.parameterize
   end
-
 end

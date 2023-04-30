@@ -62,6 +62,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_31_211506) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "slug"
+    t.index ["name"], name: "index_genres_on_name", unique: true
   end
 
   create_table "movies", force: :cascade do |t|
@@ -75,6 +76,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_31_211506) do
     t.string "director"
     t.integer "duration"
     t.string "slug"
+    t.index ["title"], name: "index_movies_on_title", unique: true
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -95,7 +97,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_31_211506) do
     t.datetime "updated_at", null: false
     t.string "username"
     t.boolean "admin", default: false
-    t.index ["username"], name: "index_users_on_username"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["name"], name: "index_users_on_name", unique: true
+    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

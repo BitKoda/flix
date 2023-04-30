@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Create a join table between Movies and Genres
 class CreateCharacterizations < ActiveRecord::Migration[7.0]
   def change
     create_table :characterizations do |t|

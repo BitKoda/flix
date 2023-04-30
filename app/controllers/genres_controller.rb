@@ -1,6 +1,9 @@
+# frozen_string_literal: true
+
+# GenresController
 class GenresController < ApplicationController
-  before_action :require_admin, except: [:index, :show]
-  before_action :get_genre, only: [:show, :destroy]
+  before_action :require_admin, except: %i[index show]
+  before_action :find_genre_by_slug, only: %i[show destroy]
 
   def index
     @genres = Genre.order(:name)
@@ -17,8 +20,8 @@ class GenresController < ApplicationController
   def create
     @genre = Genre.new(genre_params)
     if @genre.save
-      redirect_to genres_url, 
-        notice: "Genre was successfully created!"
+      redirect_to genres_url,
+                  notice: 'Genre was successfully created!'
     else
       render :new, status: :unprocessable_entity
     end
@@ -31,7 +34,7 @@ class GenresController < ApplicationController
 
   private
 
-  def get_genre
+  def find_genre_by_slug
     @genre = Genre.find_by!(slug: params[:id])
   end
 

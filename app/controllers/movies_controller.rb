@@ -1,7 +1,10 @@
+# frozen_string_literal: true
+
+# MoviesController
 class MoviesController < ApplicationController
-  before_action :require_signin, except: [:index, :show]
-  before_action :require_admin, except: [:index, :show]
-  before_action :get_movie, only: [:show, :edit, :update, :destroy]
+  before_action :require_signin, except: %i[index show]
+  before_action :require_admin, except: %i[index show]
+  before_action :find_movie_by_slug, only: %i[show edit update destroy]
 
   def index
     @movies = Movie.send(movies_filter)
@@ -17,12 +20,11 @@ class MoviesController < ApplicationController
     @user_reviewed = current_user.reviewed_movies.include?(@movie) if current_user
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @movie.update(movie_params)
-      redirect_to @movie, notice: "Movie successfully updated."
+      redirect_to @movie, notice: 'Movie successfully updated.'
     else
       render :edit, status: :unprocessable_entity
     end
@@ -32,10 +34,10 @@ class MoviesController < ApplicationController
     @movie = Movie.new
   end
 
-  def create 
+  def create
     @movie = Movie.new(movie_params)
     if @movie.save
-      redirect_to @movie, notice: "Movie successfully created."
+      redirect_to @movie, notice: 'Movie successfully created.'
     else
       render :new, status: :unprocessable_entity
     end
@@ -43,30 +45,29 @@ class MoviesController < ApplicationController
 
   def destroy
     @movie.destroy
-    redirect_to movies_url, status: :see_other, alert: "Movie successfully deleted."
+    redirect_to movies_url, status: :see_other, alert: 'Movie successfully deleted.'
   end
 
   private
 
-  def get_movie
+  def find_movie_by_slug
     @movie = Movie.find_by!(slug: params[:id])
   end
 
   def movie_params
-    params.require(:movie).permit(
-      :title, 
-      :description, 
-      :rating, 
-      :released_on, 
-      :total_gross,
-      :director,
-      :duration,
-      :main_image,
-      genre_ids: [])
+    params.require(:movie).permit(:title,
+                                  :description,
+                                  :rating,
+                                  :released_on,
+                                  :total_gross,
+                                  :director,
+                                  :duration,
+                                  :main_image,
+                                  genre_ids: [])
   end
 
   def movies_filter
-    if params[:filter].in? %w(upcoming recent hits flops)
+    if params[:filter].in? %w[upcoming recent hits flops]
       params[:filter]
     else
       :released

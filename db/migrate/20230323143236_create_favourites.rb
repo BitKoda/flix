@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Create a Favourites table in the database
 class CreateFavourites < ActiveRecord::Migration[7.0]
   def change
     create_table :favourites do |t|

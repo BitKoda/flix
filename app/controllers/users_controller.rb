@@ -1,8 +1,11 @@
+# frozen_string_literal: true
+
+# UsersController
 class UsersController < ApplicationController
-  before_action :require_signin, except: [:new, :create]
-  before_action :require_correct_user, only: [:edit, :update]
+  before_action :require_signin, except: %i[new create]
+  before_action :require_correct_user, only: %i[edit update]
   before_action :require_admin, only: [:destroy]
-  before_action :get_user, only: [:show, :edit, :update, :destroy]
+  before_action :find_user_by_username, only: %i[show edit update destroy]
 
   def index
     @users = User.not_admins
@@ -21,18 +24,17 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      redirect_to @user, notice: "Thanks for signing up!"
+      redirect_to @user, notice: 'Thanks for signing up!'
     else
       render :new, status: :unprocessable_entity
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @user.update(user_params)
-      redirect_to @user, notice: "Account successfully updated!"
+      redirect_to @user, notice: 'Account successfully updated!'
     else
       render :edit, status: :unprocessable_entity
     end
@@ -40,11 +42,12 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
-    redirect_to movies_url, status: :see_other, alert: "Account successfully deleted!"
+    redirect_to movies_url, status: :see_other, alert: 'Account successfully deleted!'
   end
 
   private
-  def get_user
+
+  def find_user_by_username
     @user = User.find_by!(username: params[:id])
   end
 
@@ -55,9 +58,9 @@ class UsersController < ApplicationController
   def require_correct_user
     @user = User.find_by(username: params[:id])
     redirect_to movies_url unless current_user?(@user)
-  end 
+  end
 
   def user_params
-    params.require(:user).permit(:name, :username, :email, :password, :password_confirmation) 
+    params.require(:user).permit(:name, :username, :email, :password, :password_confirmation)
   end
 end

@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Movie model logic
 class Movie < ApplicationRecord
   # callbacks
   before_save :set_slug
@@ -12,7 +15,7 @@ class Movie < ApplicationRecord
 
   has_one_attached :main_image
 
-  RATINGS = %w(G PG PG-13 R NC-17)
+  RATINGS = %w[G PG PG-13 R NC-17].freeze
 
   # built-in validations
   validates :title, presence: true, uniqueness: true
@@ -25,22 +28,22 @@ class Movie < ApplicationRecord
   # custom validations
   validate :acceptable_image
 
-  #def self.recently_added
+  # def self.recently_added
   #  order("created_at desc").limit(3)
-  #end
+  # end
 
   # scopes
-  scope :released, -> { where("released_on < ?", Time.now).order(released_on: :desc) }
-  scope :upcoming, -> { where("released_on > ?", Time.now).order(created_at: :desc) }
-  scope :recent, ->(max=5) { released.limit(max) }
-  scope :hits, -> { released.where("total_gross >= 1300000000").order(total_gross: :desc) }
-  scope :flops, -> { released.where("total_gross < 100000000").order(total_gross: :asc) }
+  scope :released, -> { where('released_on < ?', Time.zone.now).order(released_on: :desc) }
+  scope :upcoming, -> { where('released_on > ?', Time.zone.now).order(created_at: :desc) }
+  scope :recent, ->(max = 5) { released.limit(max) }
+  scope :hits, -> { released.where('total_gross >= 1300000000').order(total_gross: :desc) }
+  scope :flops, -> { released.where('total_gross < 100000000').order(total_gross: :asc) }
 
   def flop?
-    if total_gross.blank? || total_gross < 225_000_000 
+    if total_gross.blank? || total_gross < 225_000_000
       true
     elsif (total_gross < 225_000_000) && (reviews.count > 50) && (reviews.average(:stars) >= 4)
-      false 
+      false
     else
       false
     end
@@ -51,7 +54,7 @@ class Movie < ApplicationRecord
   end
 
   def average_stars_as_percent
-    (self.average_stars / 5.0) * 100
+    (average_stars / 5.0) * 100
   end
 
   def number_reviews
@@ -65,16 +68,14 @@ class Movie < ApplicationRecord
   private
 
   def acceptable_image
-    return unless main_image.attached? 
+    return unless main_image.attached?
 
-    unless main_image.blob.byte_size <= 512.kilobytes
-      errors.add(:main_image, "is too big")
-    end
+    errors.add(:main_image, 'is too big') unless main_image.blob.byte_size <= 512.kilobytes
 
-    acceptable_types = ["image/jpeg", "image/png"]
-    unless acceptable_types.include?(main_image.blob.content_type)
-      errors.add(:main_image, "must be a JPEG or PNG")
-    end
+    acceptable_types = ['image/jpeg', 'image/png']
+    return if acceptable_types.include?(main_image.blob.content_type)
+
+    errors.add(:main_image, 'must be a JPEG or PNG')
   end
 
   def set_slug
