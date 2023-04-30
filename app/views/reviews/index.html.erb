@@ -7,7 +7,7 @@
         <%= profile_image(r.user, 35) %>
       </span>
       <span class="title">
-        <%= link_to r.username, r.user %>
+        <%= link_to r.user.username, r.user %>
       </span>
       <span class="date">
         <%= time_ago_in_words(r.created_at) %> ago

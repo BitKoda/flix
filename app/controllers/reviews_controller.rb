@@ -3,7 +3,7 @@
 # ReviewsController
 class ReviewsController < ApplicationController
   before_action :require_signin
-  before_action :find_movie_by_id
+  before_action :find_movie_by_slug
   before_action :set_review, only: %i[show edit update destroy]
 
   def index
@@ -48,11 +48,11 @@ class ReviewsController < ApplicationController
     params.require(:review).permit(:stars, :comment)
   end
 
-  def find_movie_by_id
-    @movie = Movie.find(params[:movie_id])
+  def find_movie_by_slug
+    @movie = Movie.find_by!(slug: params[:movie_id])
   end
 
   def set_review
-    @review = @movie.reviews.find_by!(slug: params[:id])
+    @review = @movie.reviews.find_by!(slug: params[:movie_id])
   end
 end
