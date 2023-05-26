@@ -5,7 +5,7 @@
 - [About <a name="about"></a>](#about-)
 - [Tech Stack <a name="tech-stack"></a>](#tech-stack-)
 - [Description <a name="Description"></a>](#Description-)
-- [Setup <a name="Requirements"></a>](#Requirements-)
+- [Requirements <a name="Requirements"></a>](#Requirements-)
 - [Installation <a name="Installation"></a>](#Installation-)
 
 
@@ -24,10 +24,7 @@ Flix is a full stack Ruby on Rails app to rate, review, and discover movies. It'
 
 ## Description  <a name="Description"></a>
 
-`A hosted version` of this app can be found at https://morning-brook-10617.herokuapp.com/
-<br>
-Flix is responsive with a mobile first approach.
-<br>
+A hosted version of this app can be found at https://morning-brook-10617.herokuapp.com/. Flix is responsive with a mobile first approach.<br>
 
 1. Simply browse a list of movies, OR <br>
 2. Sign up with an email, and a password to login to read, review, fave, and rate a movie. (Admins only can create a new movie listing at this time).<br>
