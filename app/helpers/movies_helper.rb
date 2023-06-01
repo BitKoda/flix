@@ -5,9 +5,9 @@ module MoviesHelper
   def main_image(movie)
     if movie.main_image.attached?
       image_tag(movie.main_image,
-                class: 'movie-image')
+                class: 'card-img-top')
     else
-      image_tag('placeholder.png', class: 'movie-image')
+      image_tag('placeholder.png', class: 'card-img-top')
     end
   end
 
@@ -34,12 +34,4 @@ module MoviesHelper
   def nav_link_to(name, url)
     current_page?(url) ? link_to(name, url, class: 'active') : link_to(name, url)
   end
-
-  # def average_stars(movie)
-  # if movie.average_stars.zero?
-  #  0.0
-  # else
-  #   content_tag(:span, "#{movie.average_stars.truncate(1)} out of 5 stars")
-  # end
-  # end
 end

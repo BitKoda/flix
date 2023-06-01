@@ -127,47 +127,22 @@ header {
 
 // Movies Index Page
 
-section.movie {
-  @extend .row;
-  margin-bottom: 1.5rem;
-  padding-bottom: 1em;
-  border-bottom: 1px dotted $border-color;
 
-  &:nth-last-child(1) {
-    border-bottom: none;
-  }
+.card-title a {
+  color: black;
+  font-size: 0.9em;
+  text-transform: uppercase;
 
-  .image {
-    @extend .col-md-3, .text-center;
-    img {
-      width: 100px;
-      box-shadow: $box-shadow;
-    }
-  }
+  a:hover { color: $blue }
+}
+.card-title a:hover {
+  color: $blue;
+  text-decoration: none;
+}
 
-  .summary {
-    @extend .col-md-9, .text-start;
-  }
-
-  h2 {
-    font-size: 1.5rem;
-    margin-bottom: 0.25rem;
-  }
-
-  h3 {
-    font-size: 1.1rem;
-    color: $secondary-text-color;
-    font-weight: 400;
-  }
-
-  p {
-    margin-top: 1.1rem;
-  }
-
-  span.stars {
-    float: right;
-    margin-top: -3.75rem;
-  }
+.card-text {
+  color: $medium-gray;
+  font-size: 0.8em;
 }
 
 // Movie Show Page
