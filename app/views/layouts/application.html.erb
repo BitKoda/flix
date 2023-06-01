@@ -10,14 +10,15 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <%= render "layouts/header" %>
+  <body class="d-flex flex-column h-100">
+    <main class="flex-shrink-0">
+      <%= render "layouts/header" %>
 
-    <div class="content">
-      <%= render "layouts/flash" %>
-      <%= yield %>
-    </div>
-
+      <div class="content">
+        <%= render "layouts/flash" %>
+        <%= yield %>
+      </div>
+    </main>
     <%= render "layouts/footer" %>
   </body>
 </html>
