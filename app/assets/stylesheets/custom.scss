@@ -399,18 +399,17 @@ footer {
 // Admin Section
 
 section.admin {
-  text-align: center;
-  margin: 3rem 0;
+  text-align: right;
+  margin: 0 0 3rem 0;
   padding-top: 2rem;
-  border-top: 1px dashed $border-color;
 
   &.no-rule {
     border-top: none;
     padding-top: 0;
   }
 
-  a.button, button {
-    @extend .btn, .btn-secondary;
+  a {
+    @extend .btn, .btn-outline-primary;
     letter-spacing: 1px;
     text-transform: uppercase;
   }
