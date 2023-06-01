@@ -3,7 +3,7 @@
 # MoviesController
 class MoviesController < ApplicationController
   before_action :require_signin, except: %i[index show]
-  before_action :require_admin, except: %i[index show]
+  before_action :require_admin, except: %i[index show new create]
   before_action :find_movie_by_slug, only: %i[show edit update destroy]
 
   def index

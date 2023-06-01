@@ -1,3 +1,8 @@
+<% if current_user %>
+  <section class="sticky-top admin">
+    <%= link_to "+ Add Movie", new_movie_path, class: "btn btn-outline-primary" %>
+  </section>
+<% end %>
 <% @movies.each do |movie| %>
   <section class="movie">
     <div class="image">
@@ -21,8 +26,3 @@
   </section>
 <% end %>
 
-<% if current_user_admin? %>
-  <section class="admin">
-    <%= link_to "Add a New Movie", new_movie_path, class: "button" %>
-  </section>
-<% end %>
