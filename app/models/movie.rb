@@ -15,7 +15,7 @@ class Movie < ApplicationRecord
 
   has_one_attached :main_image
 
-  RATINGS = %w[G PG PG-13 R NC-17].freeze
+  RATINGS = %w[U PG 12A 12 15 18 R18].freeze
 
   # built-in validations
   validates :title, presence: true, uniqueness: true
