@@ -45,7 +45,7 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:stars, :comment)
+    params.require(:review).permit(:stars, :comment, :headline)
   end
 
   def find_movie_by_slug
@@ -53,6 +53,6 @@ class ReviewsController < ApplicationController
   end
 
   def set_review
-    @review = @movie.reviews.find_by!(slug: params[:movie_id])
+    @review = @movie.reviews.find(params[:id])
   end
 end

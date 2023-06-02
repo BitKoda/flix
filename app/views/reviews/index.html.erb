@@ -16,7 +16,7 @@
       <p>
         <%= r.comment %>
         <% if r.user == current_user %>
-          <%= link_to "Edit review", edit_movie_review_path(r.movie_id, r.id) %>
+          <%= link_to "Edit review", edit_movie_review_path(r.movie.slug, r.id) %>
         <% end %>
       </p>
     </div>
