@@ -149,6 +149,8 @@ header {
 
 section.movie-details {
   @extend .row;
+  padding-bottom: 50px;
+  border-bottom: 1px solid silver;
 
   .image {
     @extend .col-md-3, .text-start;
@@ -182,16 +184,6 @@ section.movie-details {
     font-weight: 300;
   }
 
-  table {
-    td {
-      padding-top: 0.35rem;
-      padding-bottom: 0.35rem;
-    }
-    th {
-      padding-right: 1rem;
-    }
-  }
-
   .fans {
     img {
       margin-top: 0.25rem;
@@ -199,6 +191,20 @@ section.movie-details {
     }
   }
 
+  .user-action-btn {
+    @extend .btn, .btn-secondary;
+    margin-top: 1rem;
+    margin-right: 1rem;
+    background-color: $blue;
+    border-radius: 50%;
+    padding: 10px;
+
+    border-style: none;
+  }
+
+  .user-action-btn:hover {
+    background-color: $blue;
+  }
   .faves {
     @extend .input-group;
     margin-top: 1rem;
@@ -232,18 +238,20 @@ section.movie-details {
     }
   }
 
+
   a.review {
     @extend .btn, .btn-success;
     letter-spacing: 1px;
     text-transform: uppercase;
     margin-top: 1rem;
   }
+}
 
-  .reviews {
+.reviews {
+  margin-top: 50px;
     .star-rating {
       margin-bottom: 0.5rem;
     }
-  }
   .review-data {
     font-size: 0.5em;
   }
@@ -258,6 +266,12 @@ ul.users {
 
   li {
     margin: 1em 0;
+  }
+}
+
+.reviews {
+  .featured-review {
+    margin-top: 10rem;
   }
 }
 
