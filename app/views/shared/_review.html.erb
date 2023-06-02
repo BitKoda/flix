@@ -1,11 +1,9 @@
-<h3>Review <%= @movie.title %></h3>
+<h3 style="margin-top: 1rem;">Review <%= @movie.title %></h3>
 
+<div class="form-group" style="width: 100%;">
 <%= form_with(model: [@movie, @review]) do |f| %>
 
   <%= render "shared/errors", object: @review %>
-
-  <%= f.label :headline %>
-  <%= f.text_field :headline %>
 
   <%= f.label :stars %>
   <% Review::STARS.each do |star| %>
@@ -15,9 +13,13 @@
     </span>
   <% end %>
 
+  <%= f.label :headline %>
+  <%= f.text_field :headline %>
+
   <%= f.label :comment %>
-  <%= f.text_area :comment %>
+  <%= f.text_area :comment, cols: 30, rows: 20 %>
 
   <%= f.submit %>
   
 <% end %>
+</div>

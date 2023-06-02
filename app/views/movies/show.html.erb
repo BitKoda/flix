@@ -5,7 +5,22 @@
     </div>
     <div class="details">
       <div class="titles">
-        <h1><%= @movie.title %> (<%= year_of(@movie) %>)</h1>
+        <h1>
+          <%= @movie.title %> (<%= year_of(@movie) %>)
+          <% if current_user_admin? %>
+            <%= link_to icon('fa-solid fa-pen-to-square fa-2xs', 
+                             class: 'fa-2xs'), 
+                             edit_movie_path(@movie) %>
+                           <%= link_to icon('fa-solid fa-trash-can fa-2xs', 
+                                            class: 'fa-2xs'), 
+                                            @movie, 
+                                            class: "button", 
+                                            data: { turbo_method: :delete, 
+                                                    turbo_confirm: "Are you sure?" 
+                                            } %>
+          <% end %>
+
+        </h1>
         <h6 class="font-weight-light">
           <span class="badge badge-primary" style="background-color: #212529;">
             <%= @movie.rating %>
@@ -115,9 +130,3 @@
   </div>
 <% end %>
 
-<% if current_user_admin? %>
-  <section class="admin">
-    <%= link_to "Edit", edit_movie_path(@movie), class: "button" %>
-    <%= link_to "Delete", @movie, class: "button", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
-  </section>
-<% end %>
