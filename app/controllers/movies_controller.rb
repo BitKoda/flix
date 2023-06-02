@@ -11,7 +11,7 @@ class MoviesController < ApplicationController
   end
 
   def show
-    @reviews = @movie.reviews
+    @reviews = @movie.reviews ||= nil
     @reviewers = @movie.reviewers
     @review = @movie.reviews.new
     @fans = @movie.fans

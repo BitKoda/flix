@@ -85,22 +85,21 @@
   </section> <!-- END OF MOVIE DETAILS SECTION -->
 </div> <!-- END OF ROW -->
 
-
-<% if @reviews %>
+<% if @reviews.many? %>
   <div class="row reviews">
     <div class="card" style="width: 100%;">
       <h5 class="card-header">Featured Review</h5>
       <div class="card-body">
-        <h5 class="card-title"><%= @movie.reviews.first.headline %>
+        <h5 class="card-title"><%= @reviews.first.headline %>
         <span class="badge" style="background-color: #212529;">
           <i class="fa-sharp fa-solid fa-star fa-xs" style="color: #f6d32d"></i>
-          <%= @movie.reviews.first.stars %>
+          <%= @reviews.first.stars %>
         </span>
         </h5>
         <h6 class="card-subtitle mb-2 text-muted">
-          <span style="font-size: 0.9rem; font-weight: 300;">Written by <%= @movie.reviews.first.user.name %> on <%= @movie.reviews.first.created_at.to_fs(:long_ordinal) %>
+          <span style="font-size: 0.9rem; font-weight: 300;">Written by <%= @reviews.first.user.name %> on <%= @reviews.first.created_at.to_fs(:long_ordinal) %>
         </h6>
-        <p><%= @movie.reviews.first.comment %></p>
+        <p><%= @reviews.first.comment %></p>
       </div>
     </div>
     <div class="container" style="margin-top: 20px;">

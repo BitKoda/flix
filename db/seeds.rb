@@ -278,8 +278,9 @@ end
   ['Wonder Woman', %w[action adventure fantasy]]
 ].each do |title, genres|
   movie = Movie.find_by(title:)
-  genres.each do |genre|
-    # movie.genres << genre
+  genres.each do |name|
+    genre_name = Genre.find_by(name:)
+    movie.genres << genre_name
   end
 end
 
