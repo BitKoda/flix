@@ -12,23 +12,23 @@
           </span> &bull; 
           <%= @movie.released_on.to_fs(:rfc822) %> &bull;
           <% @genres.each do |genre| %>
-            <%= link_to genre.name, genre %>,
-          <% end %> &bull; 
+            <%= link_to genre.name, genre %> &bull;
+          <% end %> 
           <%= @movie.duration %> minutes &bull;
           <%= total_gross(@movie) %>
         </h6>
+        <h3 style="font-style: italic;"><%= @movie.tagline %></h3>
       </div>
 
       <!-- ACTIONS -->
       <div class="actions">
-        <span class="action-item-avg-stars">
-          <%= link_to @movie.average_stars, 
-            new_movie_review_path(@movie), 
-            class: "user-action-btn", 
-            title: "Review #{@movie.title}",
-            alt: "Link to review #{@movie.title} to watchlist" %>
-        </span>
-          <% if current_user %>
+        <% if current_user %>
+          <span class="action-item-avg-stars">
+            <%= link_to @movie.average_stars, new_movie_review_path(@movie), 
+              class: "user-action-btn", 
+              title: "Review #{@movie.title}",
+              alt: "Link to review #{@movie.title}" %>
+          </span>
           <span class="action-item-watchlist">
             <%= button_to icon('fa-solid fa-list fa-xl', 
                                class: 'fa-xl'), 
