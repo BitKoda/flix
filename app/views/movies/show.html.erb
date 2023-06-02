@@ -23,7 +23,7 @@
       <div class="actions">
         <span class="action-item-avg-stars">
           <%= link_to @movie.average_stars, 
-            @movie, 
+            new_movie_review_path(@movie), 
             class: "user-action-btn", 
             title: "Review #{@movie.title}",
             alt: "Link to review #{@movie.title} to watchlist" %>
@@ -41,9 +41,9 @@
             <%= fave_unfave_button(@movie, @favourite) %>
           </span>
           <span class="action-item-rate">
-            <%= button_to icon('fa-solid fa-star fa-xl', 
+            <%= link_to icon('fa-solid fa-star fa-xl', 
                                class: 'fa-xl'), 
-                               @movie, 
+                               new_movie_review_path(@movie), 
                                class: 'user-action-btn',
                                title: "Rate #{@movie.title}",
                                alt: "Link to rate #{@movie.title}" %>
