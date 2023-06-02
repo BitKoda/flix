@@ -239,21 +239,21 @@ movie_genres.each do |genre|
 end
 
 [
-  ['Avengers: Endgame', 'avengers-endgame.jpg', %w[action adventure sci-fi]],
-  ['Avengers: Infinity War', 'avengers-infinity-war.jpg', %w[action adventure sci-fi]],
-  ['Batman', 'batman.jpg', %w[fantasy action crime]],
-  ['Black Panther', 'black-panther.jpg', %w[action adventure sci-fi]],
-  ['Captain Marvel', 'captain-marvel.jpg', %w[action adventure sci-fi]],
-  ['Catwoman', 'catwoman.jpg', %w[action crime fantasy mystery]],
-  ['Daredevil', 'daredevil.jpg', %w[action fantasy]],
-  ['Fantastic Four', 'fantastic-four.jpg', %w[action adventure sci-fi]],
-  ['Ghost Rider', 'ghost-rider.jpg', %w[action fantasy thriller]],
-  ['Green Lantern', 'green-lantern.jpg', %w[action adventure sci-fi thriller]],
-  ['Hulk', 'hulk.jpg', %w[action adventure sci-fi]],
-  ['Iron Man', 'ironman.jpg', %w[action adventure sci-fi]],
-  ['Spider-Man', 'spider-man.jpg', %w[action fantasy]],
-  ['Superman', 'superman.jpg', %w[action adventure sci-fi]],
-  ['Wonder Woman', 'wonder-woman.jpg', %w[action adventure fantasy]]
+  ['Avengers: Endgame', 'avengers-endgame.jpg'],
+  ['Avengers: Infinity War', 'avengers-infinity-war.jpg'],
+  ['Batman', 'batman.jpg'],
+  ['Black Panther', 'black-panther.jpg'],
+  ['Captain Marvel', 'captain-marvel.jpg'],
+  ['Catwoman', 'catwoman.jpg'],
+  ['Daredevil', 'daredevil.jpg'],
+  ['Fantastic Four', 'fantastic-four.jpg'],
+  ['Ghost Rider', 'ghost-rider.jpg'],
+  ['Green Lantern', 'green-lantern.jpg'],
+  ['Hulk', 'hulk.jpg'],
+  ['Iron Man', 'iron-man.jpg'],
+  ['Spider-Man', 'spider-man.jpg'],
+  ['Superman', 'superman.jpg'],
+  ['Wonder Woman', 'wonder-woman.jpg']
 ].each do |title, filename|
   movie = Movie.find_by(title:)
   file = File.open(Rails.root.join("app/assets/images/#{filename}"))
@@ -279,7 +279,7 @@ end
 ].each do |title, genres|
   movie = Movie.find_by(title:)
   genres.each do |genre|
-    movie.genres << genre
+    # movie.genres << genre
   end
 end
 
@@ -296,8 +296,8 @@ User.create!([
                  name: 'Eric Banner',
                  email: 'hulk@marvel.com',
                  username: 'greenmachine',
-                 password: 'secret_greenmachine',
-                 password_confirmation: 'secret_greenmachine',
+                 password: 'secret_green',
+                 password_confirmation: 'secret_green',
                  admin: false
                },
                {
@@ -312,8 +312,8 @@ User.create!([
                  name: 'Carol Danvers',
                  email: 'captainmarvel@marvel.com',
                  username: 'marvellous',
-                 password: 'secret_captainmarvel',
-                 password_confirmation: 'secret_captainmarvel',
+                 password: 'secret_marvel',
+                 password_confirmation: 'secret_marvel',
                  admin: false
                }
              ])
