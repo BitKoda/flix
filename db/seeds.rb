@@ -220,6 +220,19 @@ Movie.create!([
                   director: 'Mark Steven Johnson',
                   duration: 114,
                   tagline: 'Hell is about to be unleashed.'
+                },
+                {
+                  title: 'Transformers: Rise of the Beasts',
+                  description:
+                  %(A '90s globetrotting adventure that introduces the Maximals,
+                  Predacons, and Terrorcons to the existing battle on earth
+                  between Autobots and Decepticons.).squish,
+                  released_on: '2023-06-08',
+                  rating: '12A',
+                  total_gross: 0,
+                  director: 'Steven Caple Jr.',
+                  duration: 126,
+                  tagline: 'Unite or fall.'
                 }
               ])
 
@@ -253,7 +266,8 @@ end
   ['Iron Man', 'iron-man.jpg'],
   ['Spider-Man', 'spider-man.jpg'],
   ['Superman', 'superman.jpg'],
-  ['Wonder Woman', 'wonder-woman.jpg']
+  ['Wonder Woman', 'wonder-woman.jpg'],
+  ['Transformers: Rise of the Beasts', 'transformers-rise-of-the-beasts.jpg']
 ].each do |title, filename|
   movie = Movie.find_by(title:)
   file = File.open(Rails.root.join("app/assets/images/#{filename}"))
@@ -275,7 +289,8 @@ end
   ['Iron Man', %w[action adventure sci-fi]],
   ['Spider-Man', %w[action fantasy]],
   ['Superman', %w[action adventure sci-fi]],
-  ['Wonder Woman', %w[action adventure fantasy]]
+  ['Wonder Woman', %w[action adventure fantasy]],
+  ['Transformers: Rise of the Beasts', %w[action adventure sci-fi]]
 ].each do |title, genres|
   movie = Movie.find_by(title:)
   genres.each do |name|
