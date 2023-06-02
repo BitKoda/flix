@@ -11,7 +11,8 @@ class Review < ApplicationRecord
     in: STARS,
     message: 'must be between 1 and 5'
   }
-  validates :comment, length: { minimum: 4 }
+  validates :comment, length: { minimum: 120 }
+  validates :headline, length: { minimum: 10 }
 
   scope :past_n_days, ->(_n = 2) { where('created_at < ?', Time.zone.now).order(created_at: :asc) }
 
