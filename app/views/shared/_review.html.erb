@@ -4,6 +4,9 @@
 
   <%= render "shared/errors", object: @review %>
 
+  <%= f.label :headline %>
+  <%= f.text_field :headline %>
+
   <%= f.label :stars %>
   <% Review::STARS.each do |star| %>
     <span class="star">
