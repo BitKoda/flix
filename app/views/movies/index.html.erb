@@ -16,7 +16,8 @@
             <h6 class="card-title"><%= link_to movie.title, movie %></h6>
             <p class="card-text"><%= movie.released_on.to_fs(:rfc822) %></p>
           <% else %>
-            <h6 class="card-title">Not released yet.</h6>
+            <h6 class="card-title"><%= link_to movie.title, movie %></h6>
+            <p>Not released yet.</p>
           <% end %>
         </div>
       </div>
